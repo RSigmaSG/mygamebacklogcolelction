@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    skip_before_action :require_login, only: [:new, :create]
     def create
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
     def destroy
         session.delete :username
         session.delete :user_id
-        redirect_to '/login'
+        redirect_to root_path
     end
 
     def require_login

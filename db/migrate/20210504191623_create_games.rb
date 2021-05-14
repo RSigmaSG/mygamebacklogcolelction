@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :platform
       t.string :released
+      t.string :image_url
 
       t.timestamps
     end

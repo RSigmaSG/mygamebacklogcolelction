@@ -1,5 +1,18 @@
-<%= @game.title %>
-<%= @game.released %>
+<%= @game.title %><br><br>
+<%= @game.released %><br><br>
+<div>
+    <form action=<%=new_post_path%> method="GET">
+        <input type="hidden" name="game_id" value= "<%= @game.id %>" >
+        <input type="submit" value="Create Post">
+    </form>
+</div>
 <p> 
-<img src=<%=@game.image_url%> alt="not availible">
+
 </p>
+
+<% @game.posts.each do |post| %>
+    <%= render './posts/post', post: post %>
+
+<% end %>
+
+

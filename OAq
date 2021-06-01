@@ -1,0 +1,24 @@
+
+[1mFrom:[0m /mnt/c/Users/SG/dev/flatiron/projects/project 3/mygamebacklogcollection/app/models/scraper.rb:41 Scraper.scrape_search_api:
+
+    [1;34m26[0m: [32mdef[0m [1;36mself[0m.[1;34mscrape_search_api[0m(search_url)
+    [1;34m27[0m:   
+    [1;34m28[0m:   games = []
+    [1;34m29[0m: 
+    [1;34m30[0m:   response = [1;34;4mRestClient[0m.get([31m[1;31m"[0m[31mhttps://api.rawg.io/api/games?key=0895c28de6834c4498868d10c986b87b&search=prince-of[1;31m"[0m[31m[0m)
+    [1;34m31[0m:   api_result_hash = [1;34;4mJSON[0m.parse response
+    [1;34m32[0m: 
+    [1;34m33[0m:   api_result_hash[[31m[1;31m"[0m[31mresults[1;31m"[0m[31m[0m].each [32mdo[0m |hash|
+    [1;34m34[0m:     newGameHash = [1;34;4mGame[0m.new
+    [1;34m35[0m:     newGameHash[[33m:id[0m] = hash[[31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m]
+    [1;34m36[0m:     newGameHash[[33m:title[0m] = hash[[31m[1;31m"[0m[31mname[1;31m"[0m[31m[0m]
+    [1;34m37[0m:     newGameHash[[33m:released[0m] = hash[[31m[1;31m"[0m[31mreleased[1;31m"[0m[31m[0m]
+    [1;34m38[0m:     newGameHash[[33m:image_url[0m] = hash[[31m[1;31m"[0m[31mbackground_image[1;31m"[0m[31m[0m]
+    [1;34m39[0m:     games.push(newGameHash)
+    [1;34m40[0m:   [32mend[0m
+ => [1;34m41[0m:   binding.pry
+    [1;34m42[0m: 
+    [1;34m43[0m:   games
+    [1;34m44[0m:   
+    [1;34m45[0m: [32mend[0m
+

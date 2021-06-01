@@ -1,5 +1,1 @@
-  
-<div class="info">
-<%= hidden_field_tag :post, @attraction %>
-<p><strong>Content:</strong> <%= @post.content %></p>
-</div>
+<%= render './posts/post', post: @post %>

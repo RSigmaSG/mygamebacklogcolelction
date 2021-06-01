@@ -1,4 +1,11 @@
-<h1>Hi, <%= session[:username] %>.</h1>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+<% if !session[:user_id]%>
+  <p>Welcome To My Game Backlog Colelction, Please <a href="/login">Log in</a> To Continue</p>
+<% else %>
+  <% if Post.all.empty? %>
+    Add your first Game!
+  <% else %>
+    <% Post.all.last(20).reverse_each do |post| %>
+      <%= render './posts/post', post: post %>
+    <% end %>
+  <% end %>
+<% end %> 

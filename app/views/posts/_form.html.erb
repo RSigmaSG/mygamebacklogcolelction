@@ -1,6 +1,33 @@
   <%= form_for @post  do |f| %>
+    
+    <% if @post.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+        <%= pluralize(@post.errors.count, "error") %>
+        prohibited this post from being saved:
+        </h2>
 
-    <%= f.label :content %></br>
-    <%= f.text_field :content %>
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    Game: <%= @game.title %></br>
+    <%= f.label :thoughts %></br>
+    <%= f.text_area :thoughts %></br>
+    <%= f.label :current_playtime %></br>
+    <%= f.text_field :current_playtime %> hrs</br>
+    <label>
+      <input name="completed" value="completed" type="radio">Completed</input>
+    </label><br><br>
+    
+    <input type="hidden" name="game_id" value= "<%= @game.id %>" >
+    <% if(@post.play) %>
+      <input type="hidden" name="post[play_id]" value= "<%= @post.play.id %>" >
+    <% end %>
+    <%= f.submit %>
     <br />
   <% end %>

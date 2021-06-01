@@ -1,10 +1,10 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
-      t.string :content
-      t.belongs_to :user
-      t.belongs_to :game
-
+      t.string :thoughts
+      t.belongs_to :play
+      t.integer :current_playtime
+      
       t.timestamps
     end
   end

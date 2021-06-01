@@ -1,0 +1,5 @@
+<div class="center">
+    <% @posts.reverse.each do |post| %>
+        <%= render 'post', post: post %>
+    <% end %>
+</div>

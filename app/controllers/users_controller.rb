@@ -11,7 +11,19 @@ class UsersController < ApplicationController
         session[:username] = @user.username
         redirect_to welcome_path(@user)
       else
-        redirect_to '/users/new'
+        render :new
+      end
+    end
+
+    def show
+      @user = User.find(params[:id])
+      @posts = @user.posts
+      if params[:game_id]
+        @posts = Game.find(params[:game_id]).plays.where(user_id: params[:id]).collect{|play| play.posts}.flatten
+        if @posts.empty?
+          flash[:alert] = "Posts not found."
+          redirect_to root_path
+        end
       end
     end
    
